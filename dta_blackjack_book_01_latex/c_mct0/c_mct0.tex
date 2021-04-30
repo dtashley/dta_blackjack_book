@@ -1,0 +1,661 @@
+%Mathematical and Card Counting Topics
+\chapter[\cmctzeroshorttitle{}]{\cmctzeroshorttitle{}}
+
+\label{cmct0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mathematical Definitions and Topics}
+\label{cmct0:smtp0}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Use of Greek Letters}
+\label{cmct0:smtp0:sugl0}
+
+Greek letters are used as variable names throughout this book, for two
+reasons:
+
+\begin{itemize}
+   \item There aren't enough letters in the English alphabet.
+   \item In some cases, certain quantities are traditionally associated with
+         a Greek letter.
+\end{itemize}
+
+The Greek alphabet has some upper- and and lower-case letters that appear
+very dissimilar:  for example, upper-case ``Omega'' is $\Omega$ whereas
+lower-case ``Omega'' is $\omega$.  For this reason, upper- and lower-case
+Greek letters are \emph{not} used interchangeably to denote the same variable.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sets of Numbers}
+\label{cmct0:smtp0:ssnm0}
+
+An integer is a ``whole number'' or ``counting number''.  
+The set of integers ($\{ \ldots, -2, -1, 0, 1, 2, \ldots\}$) is denoted $\vworkintset{}$,
+the set of non-negative integers ($\{ 0, 1, 2, \ldots\}$) is denoted $\vworkintsetnonneg{}$,
+and the set of positive integers ($\{ 1, 2, \ldots\}$) is denoted $\vworkintsetpos{}$.
+
+A rational number is a ratio (or fraction) of two integers; for example, 2/3 or 121/3 or 0/1.
+The set of rational numbers is denoted $\vworkratset{}$, and the set of non-negative rational numbers
+is denoted $\vworkratsetnonneg$.
+
+A real number is a number that may have any value, such as 2, -29, 1.8, 2/3, 0, $\pi$, or $\sqrt{2}$.
+The set of real numbers is denoted $\vworkrealset$, and the set of non-negative real numbers
+is denoted $\vworkrealsetnonneg$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Floor, Ceiling, and Round Functions}
+\label{cmct0:smtp0:sfcr0}
+
+The floor of $x$, denoted $\lfloor x \rfloor$, is the largest integer not larger
+than $x$.
+For example, $\lfloor -7 \rfloor = -7$,
+$\lfloor -3.2 \rfloor = -4$,
+$\lfloor 3 \rfloor = 3$, and
+$\lfloor 4.9 \rfloor = 4$.
+
+The floor function as defined for negative arguments isn't consistent with the
+way people tend to think during card counting calculations.  I define
+$\lfloor x \rfloor^*$ as a floor function that truncates towards 0 for negative 
+numbers.
+For example, $\lfloor -7 \rfloor^* = -7$,
+$\lfloor -3.2 \rfloor^* = -3$,
+$\lfloor 3 \rfloor^* = 3$, and
+$\lfloor 4.9 \rfloor^* = 4$.
+
+The ceiling of $x$, denoted $\lceil x \rceil$, is the smallest integer not smaller
+than $x$.
+For example, $\lceil -7 \rceil = -7$,
+$\lceil -3.2 \rceil = -3$,
+$\lceil 3 \rceil = 3$, and
+$\lceil 4.9 \rceil = 5$.
+
+The ceiling function as defined for negative arguments isn't consistent with the
+way people tend to think during card counting calculations.  I define
+$\lceil x \rceil^*$ as a ceiling function that rounds away from 0 for negative 
+numbers.
+For example, $\lceil -7 \rceil^* = -7$,
+$\lceil -3.2 \rceil^* = -4$,
+$\lceil 3 \rceil^* = 3$, and
+$\lceil 4.9 \rceil^* = 5$.
+
+I define $\langle x \rangle$ to be a rounding function where the half-value is rounded towards 0.
+For example, $\langle -3.5001 \rangle = -4$,
+$\langle -3.5 \rangle = -3$,
+$\langle -3.4999 \rangle = -3$,
+$\langle 3.4999 \rangle = 3$,
+$\langle 3.5 \rangle = 3$,
+and $\langle 3.5001 \rangle = 4$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Matrices and Vectors}
+\label{cmct0:smtp0:smvc0}
+
+A matrix is a rectangular collection of integers, rational numbers, or real
+numbers.  For example,
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smvc0:01}
+\boldsymbol{m} = \boldsymbol{m_{4 \times 3}} = \left[ \begin{array}{ccc}
+1        & \pi & \sqrt{41} \\
+1.8      & -9  & 3/2       \\
+\pi^\pi  &  2  & 2^{-2}    \\
+10       &  0  & 12
+\end{array}\right].
+\end{equation}
+
+Variable names representing matrices are typeset in a bold font
+($\boldsymbol{m}$ rather than $m$).  Optionally, for clarity,
+the number of rows and columns in a matrix is included in a subscript,
+as is shown in (\ref{eq:cmct0:smtp0:smvc0:01}).
+
+If a single element of a matrix is to be identified, this is done in a subscript,
+with the row being identified first, then the column.
+For example, from (\ref{eq:cmct0:smtp0:smvc0:01}), $m_{3,1} = \pi^\pi$.
+$m_{3,1}$ is not typeset in a bold font, as it is a single element
+of a matrix rather than a matrix.
+
+A vector is a matrix with only one row or one column.  If the matrix has only one row,
+it is called a row vector, whereas if it has only one column, it is called a columan vector.
+Vectors are denoted by a non-bold variable name with an arrow above.
+(\ref{eq:cmct0:smtp0:smvc0:02}) is an example of a row vector, and
+(\ref{eq:cmct0:smtp0:smvc0:03}) is an example of a column vector.
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smvc0:02}
+\overrightarrow{p} = \left[ \begin{array}{ccc}
+-99        & \pi^2 & \sqrt{3/2} 
+\end{array}\right].
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smvc0:03}
+\overrightarrow{q} = \left[ \begin{array}{c}
+-1        \\
+3.29      \\
+\pi^3  \\
+101
+\end{array}\right].
+\end{equation}
+
+A single element or a row vector or column vector may be
+identified with either one or two subscripts.
+From (\ref{eq:cmct0:smtp0:smvc0:02}), $p_{1,3} = p_{3} = \sqrt{3/2}$.
+From (\ref{eq:cmct0:smtp0:smvc0:03}), $q_{3,1} = q_{3} = \pi^3$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Matrix Operations}
+\label{cmct0:smtp0:smop0}
+
+A matrix with its rows and columns transposed may be identified with a ``T'' subscript.
+With reference to (\ref{eq:cmct0:smtp0:smvc0:01}):
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smop0:01}
+\boldsymbol{m^T} = \boldsymbol{m_{3 \times 4}^T} = \left[ \begin{array}{cccc}
+1         & 1.8      & \pi^\pi  & 10 \\
+\pi       & -9       & 2        &  0 \\
+\sqrt{41} & 3/2      & 2^{-2}   & 12
+\end{array}\right].
+\end{equation}
+
+A transposed row vector is a column vector, and vice-versa.
+
+Matrices with the same number of rows and columns may be added or subtracted by
+adding or subtracting each
+element.  For example:
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smop0:02}
+\left[ \begin{array}{cc}
+1 & 2 \\
+3 & 4 \\
+5 & 6 \\
+7 & 8
+\end{array}\right]
++
+\left[ \begin{array}{cc}
+9  &  10 \\
+11 &  12 \\
+13 &  14 \\
+15 &  16
+\end{array}\right]
+-
+\left[ \begin{array}{cc}
+17 & 18 \\
+19 & 20 \\
+21 & 22 \\
+23 & 24
+\end{array}\right] 
+=
+\left[ \begin{array}{cc}
+-7 & -6 \\
+-5 & -4 \\
+-3 & -2 \\
+-1 & 0
+\end{array}\right]
+.
+\end{equation}
+
+Matrices may be multiplied by a real number by multiplying each element.  For example:
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smop0:03}
+2 \left[ \begin{array}{cc}
+17 & 18 \\
+19 & 20 \\
+21 & 22 \\
+23 & 24
+\end{array}\right] 
+=
+\left[ \begin{array}{cc}
+34 & 36 \\
+38 & 40 \\
+42 & 44 \\
+46 & 48
+\end{array}\right]
+.
+\end{equation}
+
+Two matrices $\boldsymbol{A_{m,n}}$ and $\boldsymbol{B_{n,p}}$ may be multiplied
+to form the matrix $\boldsymbol{C_{m,p}} = \boldsymbol{A_{m,n}} \boldsymbol{B_{n,p}}$.
+Note that it is required that the number of columns of $\boldsymbol{A}$ equal the
+number of rows of $\boldsymbol{B}$.  Note also that the matrix multiplication operation
+depends on the order of the operands:  $\boldsymbol{A_{m,n}} \boldsymbol{B_{n,p}}$ is
+defined, whereas $\boldsymbol{B_{n,p}}\boldsymbol{A_{m,n}}$ ($p \neq m$) is not.
+
+If $\boldsymbol{A_{m,n}}$ and $\boldsymbol{B_{n,p}}$ are multiplied
+to form the matrix $\boldsymbol{C_{m,p}} = \boldsymbol{A_{m,n}} \boldsymbol{B_{n,p}}$,
+each element of $\boldsymbol{C_{m,p}}$ is defined as:
+
+\begin{equation}
+\label{eq:cmct0:smtp0:smop0:04}
+c_{i,j} = a_{i,1} b_{1,j} + a_{i,2} b+{2,j} + \ldots +
+a_{i,n} b+{n,j} =
+\sum_{k=1}^{n} a_{i,k} b_{k,j}
+.
+\end{equation}
+
+For example,
+
+\begin{eqnarray}
+\nonumber & \left[ \begin{array}{ccc}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{array}\right] 
+\left[ \begin{array}{cc}
+ 7 & 8   \\
+ 9 & 10  \\
+11 & 12
+\end{array}\right] & \\
+\label{eq:cmct0:smtp0:smop0:05}
+& =
+\left[ \begin{array}{cc}
+(1 \times 7) + (2 \times 9) + (3 \times 11) & (1 \times 8) + (2 \times 10) + (3 \times 12) \\
+(4 \times 7) + (5 \times 9) + (6 \times 11) & (4 \times 8) + (5 \times 10) + (6 \times 12)
+\end{array}\right] & \\
+\nonumber & =
+\left[ \begin{array}{cc}
+58 & 64 \\
+139 & 154
+\end{array}\right] .
+\end{eqnarray}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Card Counting Definitions and Topics}
+\label{cmct0:sctp0}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Number of Decks and Cards in the Game}
+\label{cmct0:sctp0:nga0}
+
+I use $N_{decks} \in \vworkintsetpos$ to denote the number of decks used in the game.
+Most typically, $1 \leq N_{decks} \leq 8$.
+
+I use $N_{cardsperdeck} \in \vworkintsetpos$ to denote the number of cards per deck.
+Most typically, $N_{cardsperdeck} = 52$.
+
+I use $N_{cards} \in \vworkintsetpos$ to denote the number of cards used in the game.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nga0:01}
+N_{cards} =  N_{decks} N_{cardsperdeck}
+\end{equation}
+
+I use $n_{dealt}$ to denote the number of cards removed from the shoe, and $n_{shoe}$ to
+denote the number of cards remaining in the shoe.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nga0:02}
+n_{dealt} \in \{ 0, \ldots , N_{cards} \}
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nga0:02}
+n_{shoe} \in \{ 0, \ldots , N_{cards} \}
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nga0:03}
+n_{shoe} = N_{cards} - n_{dealt}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Player's Estimate of $n_{shoe}$}
+\label{cmct0:sctp0:npes0}
+
+There are three methods available for a player to obtain or estimate 
+$n_{dealt}$ (and hence $n_{shoe})$:
+
+\begin{itemize}
+\item Counting the cards as they are removed
+      from the shoe.
+\item Counting the number of hands played so far from the shoe and multiplying by 
+      the number of players (likely including the dealer) and the average number
+      of cards per hand.
+\item Visually estimating the number of half-decks or decks remaining in the shoe.
+\end{itemize}
+
+I use $\hat{n}_{halfdecks\_f}$, $\hat{n}_{halfdeck\_r}$, and 
+$\hat{n}_{halfdeck\_c}$ to denote the player's estimate of the number of
+half-decks remaining in the shoe using the 3 obvious methods (floor, round, and ceiling).
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:03a}
+\hat{n}_{halfdecks\_f} = \left\lfloor \frac{2 n_{shoe}}{N_{cardsperdeck}} \right\rfloor
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:03b}
+\hat{n}_{halfdecks\_r} = \left\langle \frac{2 n_{shoe}}{N_{cardsperdeck}} \right\rangle
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:03c}
+\hat{n}_{halfdecks\_c} = \left\lceil \frac{2 n_{shoe}}{N_{cardsperdeck}} \right\rceil
+\end{equation}
+
+Similarly, I use $\hat{n}_{decks\_f}$, $\hat{n}_{decks\_r}$, and $\hat{n}_{decks\_c}$
+to denote the player's estimate of the number of
+decks remaining in the shoe using the 3 obvious methods (floor, round, and ceiling).
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:04a}
+\hat{n}_{decks\_f} = \left\lfloor \frac{n_{shoe}}{N_{cardsperdeck}} \right\rfloor
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:04b}
+\hat{n}_{decks\_r} = \left\langle \frac{n_{shoe}}{N_{cardsperdeck}} \right\rangle
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:npes0:04c}
+\hat{n}_{decks\_c} = \left\lceil \frac{n_{shoe}}{N_{cardsperdeck}} \right\rceil
+\end{equation}
+
+The advantage of estimating $n_{shoe}$ in half-decks is that true counts
+can be calculated as a ratio of integers rather than a ratio of an integer and
+a real number.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Shoe Penetration}
+\label{cmct0:sctp0:nspn0}
+
+I denote shoe penetration by $\rho$.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nspn0:01}
+\rho = \frac{n_{dealt}}{N_{cards}} \in \vworkratsetnonneg
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:nspn0:02}
+0 \leq \rho \leq 1
+\end{equation}
+
+Typically, the dealer places a plastic card in the shoe to mark the reshuffle point.
+If the plastic card is reached or passed during play, the shoe is reshuffled
+when the current hand has concluded.  I use $\rho_{reshuffle}$ to indicate the reshuffle point.
+The shoe is reshuffled after the current hand whenever $\rho \geq \rho_{reshuffle}$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Raw Counts}
+\label{cmct0:sctp0:swct0}
+
+There are 13 unique values of cards:  2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, and A.
+Within each value, there are 4 suits:  clubs, diamonds, hearts, and spades.  I use the letter `T'
+to denote a 10-card, and use the letters C, D, H, and S to denote the 4 suits.
+Thus, I denote the 52 unique cards as 2C, 2D, 2H, 2S,
+3C, 3D, 3H, 3S,
+4C, 4D, 4H, 4S,
+5C, 5D, 5H, 5S,
+6C, 6D, 6H, 6S,
+7C, 7D, 7H, 7S,
+8C, 8D, 8H, 8S,
+9C, 9D, 9H, 9S,
+TC, TD, TH, TS,
+JC, JD, JH, JS,
+QC, QD, QH, QS,
+KC, KD, KH, KS,
+AC, AD, AH, and AS.
+
+
+The count of cards that have been dealt so far from the shoe can be represented
+as a column vector,
+
+\begin{equation}
+\label{eq:cmct0:sctp0:swct0:01}
+\overrightarrow{c_{ws}}
+=
+\left[ \begin{array}{c}
+c_{ws2C}   \\
+c_{ws2D}   \\
+c_{ws2H}   \\
+c_{ws2S}   \\
+c_{ws3C}   \\
+c_{ws3D}   \\
+c_{ws3H}   \\
+c_{ws3S}   \\
+\vdots     \\
+c_{wsKC}   \\
+c_{wsKD}   \\
+c_{wsKH}   \\
+c_{wsKS}   \\
+c_{wsAC}   \\
+c_{wsAD}   \\
+c_{wsAH}   \\
+c_{wsAS}
+\end{array}\right],
+\end{equation}
+
+\noindent{}where \emph{w} is used to denote ra\emph{w} count and 
+\emph{s} is used to denote \emph{s}uited.
+
+The column vector shown in (\ref{eq:cmct0:sctp0:swct0:01}) might be appropriate
+for expressing a strategy for counting against side bets, but Blackjack itself
+doesn't consider the suits of cards.  In this case, we can use a simpler count
+of cards that have been dealt so far from a shoe,
+
+\begin{equation}
+\label{eq:cmct0:sctp0:swct0:02}
+\overrightarrow{c_{wu}}
+=
+\left[ \begin{array}{c}
+c_{wu2}   \\
+c_{wu3}   \\
+c_{wu4}   \\
+c_{wu5}   \\
+c_{wu6}   \\
+c_{wu7}   \\
+c_{wu8}   \\
+c_{wu9}   \\
+c_{wuT}   \\
+c_{wuJ}   \\
+c_{wuQ}   \\
+c_{wuK}   \\
+c_{wuA}
+\end{array}\right],
+\end{equation}
+
+\noindent{}where \emph{w} is used to denote ra\emph{w} count and 
+\emph{u} is used to denote \emph{u}nsuited.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Running Counts}
+\label{cmct0:sctp0:srct0}
+
+Running counts are a row vector, $\overrightarrow{c_{r}}$, that represent the
+result of assigning sets of integer values to each card that can be dealt, and keeping
+a running tally.  Running counts don't necessarily start at 0 on a new shoe---I denote the
+initial row vector $\overrightarrow{c_{r0}}$.
+
+Running counts can be compactly expressed as the sum of $\overrightarrow{c_{r0}}$
+and the result of a matrix multiplication
+of the raw count and a running count strategy matrix, $\boldsymbol{\psi_{rcs}}$ (suited) or
+$\boldsymbol{\psi_{rcu}}$ (unsuited).
+
+\begin{equation}
+\label{eq:cmct0:sctp0:srct0:01a}
+\overrightarrow{c_{r}}
+=
+\overrightarrow{c_{r0}} +
+\boldsymbol{\psi_{rcs}} \overrightarrow{c_{ws}}
+\end{equation}
+
+\begin{equation}
+\label{eq:cmct0:sctp0:srct0:01b}
+\overrightarrow{c_{r}}
+=
+\overrightarrow{c_{r0}} +
+\boldsymbol{\psi_{rcu}} \overrightarrow{c_{wu}}
+\end{equation}
+
+
+In the case of a simple counting strategy, such as hi-lo, the running count
+
+
+For example, in the case of a running count strategy that assigns 1 to the card
+values 2 through 6 and $-1$ to the face cards and aces, plus keeps a side count of aces,
+
+\begin{equation}
+\label{eq:cmct0:sctp0:srct0:02}
+\boldsymbol{\psi_{rcu}}
+=
+\left[ \begin{array}{cc}
+ 1 & 0     \\
+ 1 & 0     \\
+ 1 & 0     \\
+ 1 & 0     \\
+ 1 & 0     \\
+ 0 & 0     \\
+ 0 & 0     \\
+ 0 & 0     \\
+-1 & 0     \\
+-1 & 0     \\
+-1 & 0     \\
+-1 & 0     \\
+-1 & 1
+\end{array}\right].
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{True Counts}
+\label{cmct0:sctp0:strc0}
+
+True counts are running counts divided by the some approximation of the 
+number of cards remaining
+in the shoe, using one of the approximations specified
+in (\ref{eq:cmct0:sctp0:npes0:03a}) through (\ref{eq:cmct0:sctp0:npes0:04c}).
+
+Need to find variable names for this.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Indexed Playing Strategy}
+\label{cmct0:sctp0:sips0}
+
+In general, the indexed playing strategy is a strategy that is some function of
+running counts, true counts, estimate of the number of decks, etc.  Again,
+need nomenclature.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Betting Strategy}
+\label{cmct0:sctp0:sibs0}
+
+Need to find some metric that correlates well with the expected value.
+
+Need nomenclature.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{How to Measure the Goodness of a Card Counting System}
+\label{cmct0:sctp0:sgcs0}
+
+Card counting is essentially a partitioning system.  Calculations are performed
+to create a set of discrete inputs.  Only some may occur in an actual game.
+We decide that some combinations have a positive expected value, and some have a
+zero or negative expected value.
+
+$E_i$ denotes the expected profit or loss in the $i$th partition.
+
+If we used only indexed play (didn't adjust betting amount), and played every hand,
+the expected value of the game would be.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:sgcs0:01}
+\sum_{\forall i} p_i E_i
+\end{equation}
+
+One measure of goodness of a blackjack card counting system would be the
+expected value of those hands played where $E_i > 0$, i.e.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:sgcs0:02}
+\sum_{i: E_i > 0} p_i E_i
+\end{equation}
+
+\noindent{}This measure corresponds to the gain per hand dealt (i.e. per unit time) if one
+played only the hands with a favorable count.
+
+Another measure is:
+
+\begin{equation}
+\label{eq:cmct0:sctp0:sgcs0:03}
+\frac{\sum_{i: E_i > 0} p_i E_i}{\sum_{i: E_i > 0}p_i}
+\end{equation}
+
+\noindent{}This measure corresponds to the gain per hand played if one
+played only the hands with a favorable count.
+
+A third measure would be the ratio of the good and bad hands, i.e.
+
+\begin{equation}
+\label{eq:cmct0:sctp0:sgcs0:04}
+-\frac{\sum_{i: E_i \leq 0} p_i E_i}{\sum_{i: E_i > 0}p_i E_i}
+\end{equation}
+
+\noindent{}This corresponds to the bet spread required to break even.
+
+One question is which of the three metrics is most useful.  I can't pick out
+one as being the most useful.
+
+The first metric may not be especially useful, as
+skipping fractions of a shoe may attract heat.
+
+The second metric may have some bearing on wonging strategies if one
+is able to hop from table to table so that playing time is not wasted.
+
+The third metric may have some bearing if one plays every hand at the same
+table.
+
+Another question is whether a card counting system that does better on one metric
+will also do better on the other two.  The answer is not necessarily.
+It likely comes down to the effect that indexed play has.
+Need to work this down conceptually and symbolically.
+

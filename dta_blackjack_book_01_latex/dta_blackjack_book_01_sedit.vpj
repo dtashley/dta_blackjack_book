@@ -1,0 +1,104 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="(Other)"
+    WorkingDir=".">
+    <Config
+        Name="Release"
+        OutputFile=""
+        CompilerConfigName="">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine='".exe"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Files>
+        <Folder
+            Name="Main LaTeX File"
+            Filters="">
+            <F N="dta_blackjack_book_01.tex"/>
+        </Folder>
+        <Folder
+            Name="LaTeX Log Files"
+            Filters="">
+            <F N="dta_blackjack_book_01.log"/>
+        </Folder>
+        <Folder
+            Name="LaTeX Class/Style Files"
+            Filters="">
+            <F N="custbook.cls"/>
+            <F N="custbook.sty"/>
+        </Folder>
+        <Folder
+            Name="Miscellaneous LaTeX"
+            Filters="">
+            <F N="misc_latex/ucbka_acknowledgments.tex"/>
+            <F N="misc_latex/ucbka_authorlist.tex"/>
+            <F N="misc_latex/ucbka_figurereserved.eps"/>
+            <F N="misc_latex/ucbka_hxcp.tex"/>
+            <F N="misc_latex/ucbka_idxs.tex"/>
+            <F N="misc_latex/ucbka_mdefs.tex"/>
+            <F N="misc_latex/ucbka_nenv.tex"/>
+            <F N="misc_latex/ucbka_preface.tex"/>
+            <F N="misc_latex/ucbka_titlechapdefs.tex"/>
+            <F N="misc_latex/ucbka_titlepage.tex"/>
+            <F N="misc_latex/workbibl.tex"/>
+        </Folder>
+        <Folder
+            Name="Front Matter Files"
+            Filters=""/>
+        <Folder
+            Name="Chapter Files"
+            Filters="">
+            <F N="c_int0/c_int0.tex"/>
+            <F N="c_mct0/c_mct0.tex"/>
+            <F N="c_obp0/c_obp0.tex"/>
+        </Folder>
+        <Folder
+            Name="Back Matter Files"
+            Filters=""/>
+        <Folder
+            Name="Batch Build Files"
+            Filters="">
+            <F N="recomp_full.bat"/>
+            <F N="recomp_lite.bat"/>
+        </Folder>
+    </Files>
+</Project>

@@ -1,0 +1,103 @@
+%----------------------------------------------------------------------------------------------------
+%dta_blackjack_book_01.tex -- Main LaTeX file for Dave Ashley's Blackjack Book, #1.
+%----------------------------------------------------------------------------------------------------
+\documentclass[letterpaper,10pt,titlepage]{custbook}
+%
+\pagestyle{headings}
+%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[ansinew]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage{graphicx}
+\usepackage{makeidx}
+%
+%Necessary to use the makeidx package.
+\makeindex
+%
+%Shared mathematical definitions
+\input{misc_latex/ucbka_mdefs}
+%
+%Hyphenation exceptions
+\input{misc_latex/ucbka_hxcp}
+%
+%New environments, etc.
+\input{misc_latex/ucbka_nenv}
+%
+%Book, chapter, and some section titles.
+\input{misc_latex/ucbka_titlechapdefs}
+%
+\begin{document}
+%
+%Index "see" definitions
+\input{misc_latex/ucbka_idxs}
+%
+%Title page(s)
+\input{misc_latex/ucbka_titlepage}
+%
+\vspace{-0.45in}
+%
+%Declare this as frontmatter, the front portion before the meat
+%of the book.
+\frontmatter{}
+%
+%Preface
+\input{misc_latex/ucbka_preface}
+%
+%Acknowledgements
+\input{misc_latex/ucbka_acknowledgments}
+%
+%Table of contents
+\tableofcontents
+%
+%List of tables
+\listoftables
+%
+%List of figures
+\listoffigures
+%
+%List of algorithms
+%\listofalgorithms
+%
+%Everything after this is the main matter, the "meat"
+%of the book.
+\mainmatter{}
+
+%Chapter:  Introduction and Overview
+\input{c_int0/c_int0}
+
+%Chapter:  Overview of Blackjack Play
+\input{c_obp0/c_obp0}
+
+%Chapter:  Mathematical and Card Counting Topics
+\input{c_mct0/c_mct0}
+
+%Mark the start of appendices.  This causes numbering to be with letters
+%instead of numbers.
+\appendix
+
+%Glossary Of Terms
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Glossary Of Terms}
+\input{c_glo0/c_glo0}
+%
+%Glossary Of Mathematical Notation
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Glossary Of Mathematical Notation}
+\input{c_glo1/c_glo1}
+%
+%Bibliography
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliography}
+\input{misc_latex/workbibl}
+%
+%Index Must Be Formed At This Directory Level
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+%
+\end{document}
+%
+%End of file ucbka.tex.
+
