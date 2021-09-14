@@ -597,12 +597,14 @@ Need nomenclature.
 \subsection{How to Measure the Goodness of a Card Counting System}
 \label{cmct0:sctp0:sgcs0}
 
-Card counting is essentially a partitioning system.  Calculations are performed
+Card counting is a system of partitioning.  Calculations are performed
 to create a set of discrete inputs.  Only some may occur in an actual game.
 We decide that some combinations have a positive expected value, and some have a
 zero or negative expected value.
 
 $E_i$ denotes the expected profit or loss in the $i$th partition.
+
+First metric ...
 
 If we used only indexed play (didn't adjust betting amount), and played every hand,
 the expected value of the game would be.
@@ -612,6 +614,11 @@ the expected value of the game would be.
 \sum_{\forall i} p_i E_i
 \end{equation}
 
+This metric gives information about the effectiveness of the indexed play facilitated
+by the card counting strategy.
+
+Second metric ...
+
 One measure of goodness of a blackjack card counting system would be the
 expected value of those hands played where $E_i > 0$, i.e.
 
@@ -620,8 +627,10 @@ expected value of those hands played where $E_i > 0$, i.e.
 \sum_{i: E_i > 0} p_i E_i
 \end{equation}
 
-\noindent{}This measure corresponds to the gain per hand dealt (i.e. per unit time) if one
-played only the hands with a favorable count.
+\noindent{}This measure corresponds to the gain per hand dealt if one
+played only the hands with a favorable count.  Time is considered.
+
+Third metric ...
 
 Another measure is:
 
@@ -631,9 +640,11 @@ Another measure is:
 \end{equation}
 
 \noindent{}This measure corresponds to the gain per hand played if one
-played only the hands with a favorable count.
+played only the hands with a favorable count.  Time is not considered.
 
-A third measure would be the ratio of the good and bad hands, i.e.
+Fourth metric ...
+
+A fourth measure would be the ratio of the good and bad hands, i.e.
 
 \begin{equation}
 \label{eq:cmct0:sctp0:sgcs0:04}
